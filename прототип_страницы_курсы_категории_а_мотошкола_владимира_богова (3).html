@@ -1,0 +1,502 @@
+export default function CoursesPage() {
+  const contacts = {
+    phone: "+7 (918) 78-83",
+    address: "Санкт-Петербург, проспект Стачек 81к2",
+    whatsapp: "https://api.whatsapp.com/send?phone=79291794516",
+    telegram: "https://t.me/bogov_team",
+  };
+
+  const courses = [
+    {
+      hours: 5,
+      title: "5 часов до категории А",
+      audience:
+        "Опытные мотоциклисты, кому нужно быстро открыть категорию А.",
+      summary:
+        "Только подготовка к экзаменационной площадке ГИБДД. 5 часов практики по 60 минут.",
+      sections: ["Подготовка к экзамену ГИБДД"],
+      exam: true,
+      anti: false,
+      badge: "Быстрый старт",
+    },
+    {
+      hours: 12,
+      title: "Подготовка к экзамену ГИБДД",
+      audience:
+        "Ездили на мото- или мототехнике, есть базовые навыки. Хотите открыть категорию А.",
+      summary:
+        "Углублённая подготовка к экзамену. 12 часов практики.",
+      sections: ["Вводный раздел", "Базовые навыки", "Подготовка к экзамену ГИБДД"],
+      exam: true,
+      anti: false,
+      badge: "Экзамен PRO",
+    },
+    {
+      hours: 16,
+      title: "Новичок в городе",
+      audience:
+        "Начинающим, кто хочет сдать экзамен и уверенно чувствовать себя на площадке.",
+      summary:
+        "Сцепление (междурядье, развороты, медленные повороты, подъёмы) + перенос веса. 16 часов практики.",
+      sections: [
+        "Вводный раздел",
+        "Базовые навыки",
+        "Проскальзывание сцепления",
+        "Работа с весом",
+        "Подготовка к экзамену ГИБДД",
+      ],
+      exam: true,
+      anti: false,
+      badge: "Баланс и сцепление",
+    },
+    {
+      hours: 20,
+      title: "Уверенный новичок в городе",
+      audience:
+        "Тем, кто хочет освоить все 5 ключевых навыков и полностью контролировать мотоцикл.",
+      summary:
+        "Полный набор базовых навыков: сцепление, перенос веса, контрруление, активное/экстренное торможение. 20 часов практики.",
+      sections: [
+        "Вводный раздел",
+        "Базовые навыки",
+        "Проскальзывание сцепления",
+        "Работа с весом",
+        "Контрруление",
+        "Активное и экстренное торможение",
+        "Подготовка к экзамену ГИБДД",
+      ],
+      exam: true,
+      anti: false,
+      badge: "Топ выбор",
+    },
+    {
+      hours: 26,
+      title: "Авторская программа Владимира Богова",
+      audience:
+        "Полный курс по авторской методике: от нуля до уверенной езды.",
+      summary:
+        "Все разделы + 6 часов контраварийной подготовки (отработка навыков в сложных условиях и с таймингом). 26 часов практики.",
+      sections: [
+        "Вводный раздел",
+        "Базовые навыки",
+        "Проскальзывание сцепления",
+        "Работа с весом",
+        "Контрруление",
+        "Активное и экстренное торможение",
+        "Подготовка к экзамену ГИБДД",
+        "Контраварийная подготовка (6 часов)",
+      ],
+      exam: true,
+      anti: true,
+      badge: "Авторская методика",
+    },
+  ];
+
+  const teachers = [
+    { name: "Владимир Богов", desc: "Инструктор, автор методики. 11 лет стажа.", img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=600&auto=format&fit=crop" },
+    { name: "Лора Яковлева", desc: "Инструктор. Индивидуальный подход, акцент на технику.", img: "https://images.unsplash.com/photo-1519764622345-23439dd774f8?q=80&w=600&auto=format&fit=crop" },
+    { name: "Дмитрий Андрушко", desc: "Инструктор. Подготовка к экзамену и отработка моторики.", img: "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?q=80&w=600&auto=format&fit=crop" },
+  ];
+
+  const bikes = [
+    { model: "Yamaha YBR125", note: "Идеален для начальных тренировок и сложных элементов.", specs: ["124 куб.", "10 л.с.", "9,6 Нм"], img: "https://images.unsplash.com/photo-1624434733447-f2cf15a6b770?q=80&w=1000&auto=format&fit=crop"},
+    { model: "Honda FTR223", note: "Золотая середина: управляемость и контролируемая мощность.", specs: ["223 куб.", "16 л.с."], img: "https://images.unsplash.com/photo-1520881363902-a0ff4e722963?q=80&w=1000&auto=format&fit=crop"},
+    { model: "Honda CB400", note: "Для тех, кто хочет мощнее при сохранении контроля.", specs: ["399 куб.", "53 л.с."], img: "https://images.unsplash.com/photo-1579488113653-0c2b0a8f8f0b?q=80&w=1000&auto=format&fit=crop"},
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-neutral-50 to-neutral-100 text-neutral-900">
+      {/* Навигация */}
+      <header className="sticky top-0 z-40 supports-[backdrop-filter]:bg-white/70 backdrop-blur border-b border-neutral-200">
+        <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="h-9 w-9 rounded-xl bg-neutral-900 text-white grid place-items-center text-sm font-bold">VB</div>
+            <span className="font-semibold">Мотошкола Владимира Богова</span>
+          </div>
+          <nav className="hidden md:flex items-center gap-6 text-sm">
+            <a href="#philosophy" className="hover:opacity-70">Философия</a>
+            <a href="#skills" className="hover:opacity-70">Навыки</a>
+            <a href="#courses" className="hover:opacity-70">Курсы</a>
+            <a href="#moto" className="hover:opacity-70">Мотопарк</a>
+            <a href="#locations" className="hover:opacity-70">Площадки</a>
+            <a href="#compare" className="hover:opacity-70">Сравнение</a>
+            <a href="#cta" className="px-4 py-2 rounded-xl bg-neutral-900 text-white hover:opacity-90">Записаться</a>
+          </nav>
+          <div className="flex md:hidden items-center gap-2">
+            <a href={contacts.whatsapp} aria-label="WhatsApp" className="h-9 w-9 rounded-full grid place-items-center border border-neutral-200">🟢</a>
+            <a href={contacts.telegram} aria-label="Telegram" className="h-9 w-9 rounded-full grid place-items-center border border-neutral-200">✈️</a>
+          </div>
+        </div>
+      </header>
+
+      {/* Герой-блок */}
+      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
+        <div className="grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <p className="uppercase tracking-widest text-xs text-neutral-500">мотошкола</p>
+            <h1 className="text-3xl md:text-5xl font-extrabold leading-tight">
+              владимира <span className="whitespace-nowrap">богова</span>
+            </h1>
+            <p className="mt-4 text-lg text-neutral-800 font-medium">
+              Научим за 1,5–2 месяца безопасному и уверенному вождению.
+            </p>
+            <p className="mt-1 text-neutral-700">
+              Контраварийная подготовка и подготовка к экзамену ГИБДД — чтобы вы легко и быстро получили категорию «А».
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a href="#trial" className="px-5 py-3 rounded-xl bg-neutral-900 text-white hover:opacity-90">Пробный урок</a>
+              <a href="#cta" className="px-5 py-3 rounded-xl bg-white border border-neutral-200 hover:bg-neutral-50">Записаться</a>
+              <a href={contacts.whatsapp} className="px-5 py-3 rounded-xl border border-neutral-200 hover:bg-neutral-50">Написать в WhatsApp</a>
+            </div>
+          </div>
+          <div className="relative">
+            <div className="aspect-[4/3] w-full rounded-2xl shadow-xl bg-[url('https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1600&auto=format&fit=crop')] bg-cover bg-center" aria-label="Фото мотоциклиста на учебной площадке"/>
+            <div className="absolute -bottom-4 -left-4 bg-white border border-neutral-200 rounded-2xl shadow p-4 text-sm">
+              <div className="font-semibold">Полная экипировка</div>
+              <div className="text-neutral-600">Работаем круглый год. Зимой — крытая площадка.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Философия обучения */}
+      <section id="philosophy" className="mx-auto max-w-7xl px-4 py-10 md:py-14">
+        <div className="grid md:grid-cols-2 gap-8 items-start">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold">Философия обучения</h2>
+            <p className="mt-3 text-neutral-700">Не стоит сравнивать мотошколу с автошколой. Мотоцикл требует от райдера контроля тела, понимания физики и грамотного построения траектории. Этому невозможно научиться «само по себе» в городе — поэтому в основе нашей школы две вещи: продуманная методика и качественный сервис.</p>
+            <ul className="mt-4 space-y-3 text-neutral-800">
+              <li className="flex gap-3"><span className="shrink-0 mt-1">✅</span><div><span className="font-medium">Структурированная программа.</span> Минимум часов — максимум результата. Каждый курс имеет понятные цели и измеримый итог.</div></li>
+              <li className="flex gap-3"><span className="shrink-0 mt-1">✅</span><div><span className="font-medium">Методика, проверенная 10+ годами.</span> Разделы программы неоднократно отработаны на практике и постоянно дорабатываются.</div></li>
+              <li className="flex gap-3"><span className="shrink-0 mt-1">✅</span><div><span className="font-medium">Сервис и поддержка.</span> Комфортные условия обучения, прозрачные этапы и внимание к результату каждого ученика.</div></li>
+            </ul>
+          </div>
+          <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+            <div className="text-sm text-neutral-600">Принципы</div>
+            <h3 className="mt-1 text-xl font-semibold">Навык → Осознанность → Уверенность</h3>
+            <p className="mt-2 text-neutral-700">Сначала формируем базовую моторику и «чувство мотоцикла», затем закрепляем физику процессов и переводим это в устойчивые привычки на площадке и на экзамене.</p>
+            <div className="mt-4 grid grid-cols-3 gap-3 text-sm">
+              <div className="rounded-xl border border-neutral-200 p-3 text-center">База</div>
+              <div className="rounded-xl border border-neutral-200 p-3 text-center">Подготовка</div>
+              <div className="rounded-xl border border-neutral-200 p-3 text-center">Контраварийка</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Навыки и разделы обучения */}
+      <section id="skills" className="mx-auto max-w-7xl px-4 pb-4 md:pb-8">
+        <h2 className="text-2xl md:text-3xl font-bold">Навыки и разделы обучения</h2>
+        <p className="mt-2 text-neutral-700 max-w-3xl">Программа состоит из шести разделов. Они закрывают пять ключевых навыков управления мотоциклом и подготовку к экзамену ГИБДД. Каждый раздел — это конкретные упражнения и измеримый результат.</p>
+
+        <div className="mt-6 grid md:grid-cols-2 gap-4">
+          {/* Вводный раздел */}
+          <details className="rounded-2xl border border-neutral-200 bg-white p-5" open>
+            <summary className="font-medium cursor-pointer">Вводный раздел</summary>
+            <ul className="mt-3 list-disc pl-6 text-neutral-700">
+              <li>Органы управления и правильная посадка.</li>
+              <li>Причины типичных ошибок и как их избегать.</li>
+              <li>Практика: корректная работа газом, сцеплением и тормозами.</li>
+            </ul>
+          </details>
+
+          {/* Базовые навыки */}
+          <details className="rounded-2xl border border-neutral-200 bg-white p-5">
+            <summary className="font-medium cursor-pointer">Базовые навыки</summary>
+            <ul className="mt-3 list-disc pl-6 text-neutral-700">
+              <li>Контроль тела: расслабление и точность движений.</li>
+              <li>Влияние напряжения/расслабления на управляемость.</li>
+              <li>Построение траектории: точки входа/выхода и планирование манёвра.</li>
+            </ul>
+          </details>
+
+          {/* Проскальзывание сцепления */}
+          <details className="rounded-2xl border border-neutral-200 bg-white p-5">
+            <summary className="font-medium cursor-pointer">Проскальзывание сцепления</summary>
+            <ul className="mt-3 list-disc pl-6 text-neutral-700">
+              <li>Манёвры на малой скорости и в ограниченном пространстве (междурядье, развороты, медленные повороты).</li>
+              <li>Подъёмы в горку: координация газа, сцепления и тормоза.</li>
+              <li>Развитие баланса и межконечностной координации.</li>
+            </ul>
+          </details>
+
+          {/* Перенос веса */}
+          <details className="rounded-2xl border border-neutral-200 bg-white p-5">
+            <summary className="font-medium cursor-pointer">Перенос веса</summary>
+            <ul className="mt-3 list-disc pl-6 text-neutral-700">
+              <li>Определение точки переноса веса для точного манёвра.</li>
+              <li>Малые скорости: отклонение корпуса для манёвренности.</li>
+              <li>Средние скорости: полусвешивание для безопасного прохождения поворотов.</li>
+            </ul>
+          </details>
+
+          {/* Контрруление */}
+          <details className="rounded-2xl border border-neutral-200 bg-white p-5">
+            <summary className="font-medium cursor-pointer">Контрруление</summary>
+            <ul className="mt-3 list-disc pl-6 text-neutral-700">
+              <li>Быстрое введение мотоцикла в наклон и контроль угла.</li>
+              <li>Отработка моторики на малых, средних и больших скоростях.</li>
+              <li>Точность и предсказуемость траекторий.</li>
+            </ul>
+          </details>
+
+          {/* Активное и экстренное торможение */}
+          <details className="rounded-2xl border border-neutral-200 bg-white p-5">
+            <summary className="font-medium cursor-pointer">Активное и экстренное торможение</summary>
+            <ul className="mt-3 list-disc pl-6 text-neutral-700">
+              <li>Физика торможения: загрузка/разгрузка подвески.</li>
+              <li>Работа с пятном контакта и понимание его предела.</li>
+              <li>Устойчивые навыки экстренной остановки.</li>
+            </ul>
+          </details>
+
+          {/* Подготовка к экзамену ГИБДД */}
+          <details className="rounded-2xl border border-neutral-200 bg-white p-5">
+            <summary className="font-medium cursor-pointer">Подготовка к экзамену ГИБДД</summary>
+            <ul className="mt-3 list-disc pl-6 text-neutral-700">
+              <li>Все упражнения площадки, типовые ошибки и критерии оценки.</li>
+              <li>Психологическая готовность и уверенность на сдаче.</li>
+              <li>Чек-лист готовности перед экзаменом.</li>
+            </ul>
+          </details>
+
+          {/* Контраварийная подготовка */}
+          <details className="rounded-2xl border border-neutral-200 bg-white p-5">
+            <summary className="font-medium cursor-pointer">Контраварийная подготовка</summary>
+            <ul className="mt-3 list-disc pl-6 text-neutral-700">
+              <li>Комбинация выученных навыков в разных условиях и с таймингом.</li>
+              <li>Сокращение времени реакции и развитие устойчивой моторики.</li>
+              <li>Практика действий в нестандартных и экстренных ситуациях.</li>
+            </ul>
+          </details>
+        </div>
+      </section>
+
+      {/* Карточки курсов */}
+      <section id="courses" className="mx-auto max-w-7xl px-4 pb-6 md:pb-12">
+        <h2 className="text-2xl md:text-3xl font-bold">Курсы категории А</h2>
+        <p className="mt-2 text-neutral-700 max-w-2xl">
+          Выберите программу под вашу цель. Все курсы включают подготовку к экзамену ГИБДД.
+        </p>
+
+        <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {courses.map((c, idx) => (
+            <article key={idx} className="group relative rounded-2xl border border-neutral-200 bg-white shadow-sm hover:shadow-md transition-shadow">
+              <div className="absolute right-4 top-4 rounded-full bg-neutral-900 text-white text-xs px-3 py-1">
+                {c.badge}
+              </div>
+              <div className="p-6">
+                <div className="text-sm text-neutral-600">{c.hours} ч практики</div>
+                <h3 className="mt-1 text-xl font-semibold">{c.title}</h3>
+                <p className="mt-2 text-neutral-700">{c.audience}</p>
+                <p className="mt-2 text-neutral-700">{c.summary}</p>
+
+                <div className="mt-4 flex items-center gap-3 text-sm">
+                  <span className={`inline-flex items-center gap-1 rounded-full px-3 py-1 border ${c.exam ? "border-green-200 bg-green-50 text-green-700" : "border-neutral-200"}`}>
+                    <span aria-hidden>✅</span>
+                    Экзамен ГИБДД
+                  </span>
+                  <span className={`inline-flex items-center gap-1 rounded-full px-3 py-1 border ${c.anti ? "border-green-200 bg-green-50 text-green-700" : "border-neutral-200 text-neutral-600"}`}>
+                    <span aria-hidden>{c.anti ? "✅" : "•"}</span>
+                    Контраварийка
+                  </span>
+                </div>
+
+                <details className="mt-4">
+                  <summary className="cursor-pointer select-none text-neutral-900 underline-offset-4 hover:underline">Подробнее о разделах</summary>
+                  <ul className="mt-3 list-disc pl-6 text-neutral-700">
+                    {c.sections.map((s, i) => (
+                      <li key={i}>{s}</li>
+                    ))}
+                  </ul>
+                </details>
+
+                <div className="mt-6 flex gap-3">
+                  <a href="#cta" className="px-4 py-2 rounded-xl bg-neutral-900 text-white hover:opacity-90">Записаться</a>
+                  <a href="#trial" className="px-4 py-2 rounded-xl border border-neutral-200 hover:bg-neutral-50">Пробный урок</a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* Сравнительная таблица по разделам */}
+      <section id="compare" className="mx-auto max-w-7xl px-4 py-12">
+        <div className="flex items-end justify-between gap-6">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold">Сравнение курсов по разделам</h2>
+            <p className="mt-2 text-neutral-700 max-w-2xl">
+              Отметки показывают, какие разделы входят в программу. Все курсы включают подготовку к экзамену ГИБДД.
+            </p>
+          </div>
+          <a href="#cta" className="hidden md:inline-flex px-5 py-3 rounded-xl bg-neutral-900 text-white hover:opacity-90">Записаться</a>
+        </div>
+
+        <div className="mt-6 overflow-x-auto rounded-2xl border border-neutral-200 bg-white shadow-sm">
+          <table className="min-w-[900px] w-full text-left text-sm">
+            <thead className="bg-neutral-50">
+              <tr>
+                <th className="p-4 font-medium">Курс</th>
+                <th className="p-4">Вводный</th>
+                <th className="p-4">База</th>
+                <th className="p-4">Сцепление</th>
+                <th className="p-4">Вес</th>
+                <th className="p-4">Контрруление</th>
+                <th className="p-4">Торможение</th>
+                <th className="p-4">Контраварийка</th>
+              </tr>
+            </thead>
+            <tbody>
+              {courses.map((c, i) => (
+                <tr key={i} className="border-t border-neutral-100 hover:bg-neutral-50/60">
+                  <td className="p-4 font-medium">{c.title}</td>
+                  <td className="p-4 text-center">{c.sections.includes("Вводный раздел") ? "✅" : "—"}</td>
+                  <td className="p-4 text-center">{c.sections.includes("Базовые навыки") ? "✅" : "—"}</td>
+                  <td className="p-4 text-center">{c.sections.find(s=>s.toLowerCase().includes("сцепл")) ? "✅" : "—"}</td>
+                  <td className="p-4 text-center">{c.sections.find(s=>s.toLowerCase().includes("вес")) ? "✅" : "—"}</td>
+                  <td className="p-4 text-center">{c.sections.includes("Контрруление") ? "✅" : "—"}</td>
+                  <td className="p-4 text-center">{c.sections.find(s=>s.toLowerCase().includes("тормож")) ? "✅" : "—"}</td>
+                  <td className="p-4 text-center">{c.anti ? "✅" : "—"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="mt-6 grid md:grid-cols-3 gap-4">
+          <a id="trial" className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm" href="#cta">
+            <h3 className="text-lg font-semibold">Пробный урок · 60 минут</h3>
+            <p className="mt-2 text-neutral-700">Оцените подход инструкторов и методику. При покупке полного курса — бесплатно.</p>
+          </a>
+          <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+            <h3 className="text-lg font-semibold">Рассрочка</h3>
+            <p className="mt-2 text-neutral-700">Быстрое оформление на месте: Тинькофф, Сбер, Почта Банк. Оплата через Robokassa, Сплит, Долями.</p>
+          </div>
+          <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+            <h3 className="text-lg font-semibold">Связь</h3>
+            <p className="mt-2 text-neutral-700">Напишите нам в мессенджер — ответим на любые вопросы.</p>
+            <div className="mt-3 flex gap-3">
+              <a href={contacts.whatsapp} className="px-4 py-2 rounded-xl border border-neutral-200">WhatsApp</a>
+              <a href={contacts.telegram} className="px-4 py-2 rounded-xl border border-neutral-200">Telegram</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Мотопарк */}
+      <section id="moto" className="mx-auto max-w-7xl px-4 py-12">
+        <h2 className="text-2xl md:text-3xl font-bold">Наш мотопарк</h2>
+        <div className="mt-6 grid md:grid-cols-3 gap-6">
+          {bikes.map((b, i) => (
+            <article key={i} className="rounded-2xl border border-neutral-200 bg-white shadow-sm overflow-hidden">
+              <div className="aspect-[4/3] bg-cover bg-center" style={{backgroundImage:`url(${b.img})`}} />
+              <div className="p-5">
+                <h3 className="text-lg font-semibold">{b.model}</h3>
+                <p className="mt-1 text-neutral-700">{b.note}</p>
+                <ul className="mt-2 flex flex-wrap gap-2 text-sm text-neutral-600">
+                  {b.specs.map((s, idx)=>(<li key={idx} className="px-2 py-1 rounded-lg border border-neutral-200">{s}</li>))}
+                </ul>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* Площадки */}
+      <section id="locations" className="mx-auto max-w-7xl px-4 py-12">
+        <h2 className="text-2xl md:text-3xl font-bold">Наши площадки</h2>
+        <div className="mt-6 grid md:grid-cols-2 gap-6">
+          <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+            <div className="text-sm text-neutral-600">Бухарестская</div>
+            <h3 className="text-lg font-semibold">Открытая площадка</h3>
+            <p className="mt-2 text-neutral-700">Тренировки в тёплый сезон. Просторная разметка для всех упражнений.</p>
+          </div>
+          <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+            <div className="text-sm text-neutral-600">Дыбенко</div>
+            <h3 className="text-lg font-semibold">Крытая площадка</h3>
+            <p className="mt-2 text-neutral-700">Работаем круглый год. Комфортные условия зимой и в непогоду.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Преподаватели */}
+      <section id="teachers" className="mx-auto max-w-7xl px-4 py-12">
+        <h2 className="text-2xl md:text-3xl font-bold">Наши инструкторы</h2>
+        <div className="mt-6 grid md:grid-cols-3 gap-6">
+          {teachers.map((t, i) => (
+            <article key={i} className="rounded-2xl border border-neutral-200 bg-white shadow-sm overflow-hidden">
+              <div className="aspect-[4/3] bg-cover bg-center" style={{backgroundImage:`url(${t.img})`}} />
+              <div className="p-5">
+                <h3 className="text-lg font-semibold">{t.name}</h3>
+                <p className="mt-1 text-neutral-700">{t.desc}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section id="faq" className="mx-auto max-w-7xl px-4 py-12">
+        <h2 className="text-2xl md:text-3xl font-bold">Частые вопросы</h2>
+        <div className="mt-6 grid md:grid-cols-2 gap-6">
+          <details className="rounded-2xl border border-neutral-200 bg-white p-5">
+            <summary className="font-medium cursor-pointer">Можно ли начать без опыта?</summary>
+            <p className="mt-3 text-neutral-700">Да. Курс «Новичок в городе» (16 ч) — оптимальная стартовая точка: вы освоите сцепление и перенос веса, плюс подготовитесь к экзамену.</p>
+          </details>
+          <details className="rounded-2xl border border-neutral-200 bg-white p-5">
+            <summary className="font-medium cursor-pointer">Какая экипировка нужна?</summary>
+            <p className="mt-3 text-neutral-700">Мы предоставляем необходимую экипировку. Если есть своя — берите, инструктор оценит и подскажет по посадке.</p>
+          </details>
+          <details className="rounded-2xl border border-neutral-200 bg-white p-5">
+            <summary className="font-medium cursor-pointer">Как выбрать курс?</summary>
+            <p className="mt-3 text-neutral-700">Если уверенно ездили — 12 часов. Если нужен фундамент — 16 или 20 часов. Для максимума и контраварийки — авторская программа (26 часов).</p>
+          </details>
+          <details className="rounded-2xl border border-neutral-200 bg-white p-5">
+            <summary className="font-medium cursor-pointer">Где проходят занятия?</summary>
+            <p className="mt-3 text-neutral-700">На закрытой площадке, круглогодично. Зимой — на крытой площадке. Адрес и расписание согласуем при записи.</p>
+          </details>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section id="cta" className="mx-auto max-w-7xl px-4 py-16">
+        <div className="relative overflow-hidden rounded-3xl border border-neutral-200 bg-white p-8 md:p-12 shadow">
+          <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-neutral-900/5" />
+          <div className="absolute -left-10 -bottom-10 h-40 w-40 rounded-full bg-neutral-900/5" />
+          <h2 className="text-2xl md:text-3xl font-bold">Готовы начать?</h2>
+          <p className="mt-2 text-neutral-700 max-w-2xl">
+            Оставьте заявку — подберём курс, график и инструктора под ваши цели и опыт. Или напишите нам в WhatsApp/Telegram.
+          </p>
+
+          <form className="mt-6 grid md:grid-cols-3 gap-3">
+            <input type="text" placeholder="Ваше имя" className="w-full rounded-xl border border-neutral-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-neutral-900" />
+            <input type="tel" placeholder="Телефон" className="w-full rounded-xl border border-neutral-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-neutral-900" />
+            <select className="w-full rounded-xl border border-neutral-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-neutral-900">
+              {courses.map((c, i) => (
+                <option key={i} value={c.title}>{c.title}</option>
+              ))}
+            </select>
+            <textarea placeholder="Комментарий / удобное время звонка" className="md:col-span-3 min-h-[100px] rounded-xl border border-neutral-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-neutral-900" />
+            <div className="md:col-span-3 flex flex-wrap gap-3">
+              <button type="button" className="px-5 py-3 rounded-xl bg-neutral-900 text-white hover:opacity-90">Оставить заявку</button>
+              <a href={contacts.whatsapp} className="px-5 py-3 rounded-xl border border-neutral-200 hover:bg-neutral-50">Написать в WhatsApp</a>
+              <a href={contacts.telegram} className="px-5 py-3 rounded-xl border border-neutral-200 hover:bg-neutral-50">Написать в Telegram</a>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      {/* Подвал */}
+      <footer className="border-t border-neutral-200">
+        <div className="mx-auto max-w-7xl px-4 py-8 text-sm text-neutral-600 flex flex-wrap items-center justify-between gap-4">
+          <div>© {new Date().getFullYear()} Мотошкола Владимира Богова</div>
+          <div className="flex items-center gap-4">
+            <a href="#" className="hover:opacity-70">Политика конфиденциальности</a>
+            <a href="#" className="hover:opacity-70">Контакты</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
